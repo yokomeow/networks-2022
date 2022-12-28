@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeTrainer</title>
+      <style type="text/css">
+          @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+       #footer {
+        position: fixed;
+        left: 0; bottom: 0;
+        padding: 10px;
+        background: #3298dc;
+        color: #fff;
+        width: 100%;
+       }
+       .label {
+           font-family: 'Poppins', sans-serif;
+       }
+       .buttons {
+           font-family: 'Poppins', sans-serif;
+       }
+       .bg {
+           background-image: url(./bg.png);
+       }
+       .top{
+           width: 100%;
+           background: #3298dc;
+       }
+       .hd{
+           padding: 0px 0px 15px 0px;
+       }
+
+      </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="Chart.min.css">
+    <script src="Chart.min.js"></script>
+    <!--<script src="diag.js" defer></script>-->
+
+  </head>
+  <body>
+  <header class="bg hd">
+      <h1 class="top label is-size-2 has-text-white has-text-centered"> Typing Simulator </h1>
+      <p><a class="has-text-white" href="index.html">Тренажер</a></p>
+      <p><a class="has-text-white" href="diag.html">Статистика</a></p>
+  </header>
+    <canvas id="myChart" width=45% height=15%></canvas>
+    <script>
+        let ctx = document.getElementById('myChart').getContext('2d');
+        const url_stat='http://0.0.0.0:5555/get_stats';
+        var stats = [];
+
+        fetch(url_stat)
+          .then(response => response.json())
+          .then(json => {
+
+              let chart = new Chart(ctx, {
+                // Тип графика
+                type: 'bar',
+
+                // Создание графиков
+                data: {
+                    // Точки графиков
+                    labels: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+                    // График
+                    datasets: [{
+                        label: 'Статистика по буквам',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+
+                        data: json['stats']
+                    }]
+                },
+
+                // Настройки графиков
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: -1.3,
+                                suggestedMax: 1.3
+                            }
+                        }]
+                    }
+                }
+                });
+
+        });
+
+
+    </script>
+  </body>
+    <footer class="footer bg">
+        <div id="footer">
+            © Концевая В.А. kontsevaya.va@phystech.edu 2022
+        </div>
+    </footer>
+</html>

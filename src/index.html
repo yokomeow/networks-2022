@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeTrainer</title>
+      <style type="text/css">
+          @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+       #footer {
+        position: fixed;
+        left: 0; bottom: 0;
+        padding: 10px;
+        background: #3298dc;
+        color: #fff;
+        width: 100%;
+       }
+       .label {
+           font-family: 'Poppins', sans-serif;
+       }
+       .buttons {
+           font-family: 'Poppins', sans-serif;
+       }
+       .bg {
+           background-image: url(./bg.png);
+       }
+       .top{
+           width: 100%;
+           background: #3298dc;
+       }
+       .hd{
+           padding: 0px 0px 15px 0px;
+       }
+
+      </style>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  </head>
+  <body>
+  <header class="bg hd">
+      <h1 class="top label is-size-2 has-text-white has-text-centered"> Typing Simulator </h1>
+      <p><a class="has-text-white" href="index.html">Тренажер</a></p>
+      <p><a class="has-text-white" href="diag.html">Статистика</a></p>
+  </header>
+  <section class="hero is-info is-large bg">
+    <div class="hero-head container">
+
+            <h3 class="label is-size-4 has-text-white has-text-centered"> The intelligent AI will help you out! </h3>
+            <h3 id = "txt" class="label is-size-4 has-text-white has-text-centered"> First of all let us gather some statistics. Do about 20 tries </h3>
+            <progress  id="prog" class="progress is-danger" value="0" max="21"></progress>
+            <h3 class="label is-size-5 has-text-white has-text-centered begin"></h3>
+        </div>
+        <div class="hero-body has-background-white bg">
+            <div id="columns">
+                <div class="buttons columns is-half is-centered ">
+                </div>
+            </div>
+        </div>
+  </section>
+  </body>
+    <footer class="footer bg">
+        <div id="footer">
+            © Концевая В.А. kontsevaya.va@phystech.edu 2022
+        </div>
+    </footer>
+</html>
