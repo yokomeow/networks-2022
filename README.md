@@ -24,8 +24,8 @@
 cd Type-Train  
 docker-compose up -d
 
-python3 staff/create_tables.py 
-python3 staff/words.py
-docker exec -it mysql_web /bin/bash
-	mysql -u root -p tt
-	insert into users (user_id, attempts) values (1, 0);
+python3 staff/create_tables.py   
+python3 staff/words.py  
+docker exec -it mysql_web /bin/bash  
+	mysql -u root -p tt  
+	insert into users (user_id, attempts) values (1, 0);  
