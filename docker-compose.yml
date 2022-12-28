@@ -1,0 +1,45 @@
+version: '3.1'
+networks:
+  app:
+    driver: bridge
+
+services:
+
+  api_type:
+    container_name: api_type
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5555:5555"
+    volumes:
+      - "./api:/api"
+    networks:
+      - app
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/src
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+    networks:
+      - app
+
+  mysql_web:
+    image: mysql:5.7
+    container_name: mysql_web
+    restart: always
+    environment:
+      - MYSQL_DATABASE=tt
+      - MYSQL_ROOT_PASSWORD=muffin15
+    ports:
+      - '3306:3306'
+    networks:
+      - app
