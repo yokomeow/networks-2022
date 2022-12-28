@@ -21,7 +21,6 @@
 
 ### Запуск приложения
 ---
-cd Type-Train  
 docker-compose up -d
 
 python3 staff/create_tables.py   
